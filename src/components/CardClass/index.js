@@ -25,7 +25,7 @@ export default class CardClass extends Component {
             this.state.data.map((info) => (
               // sempre é necessario passar uma chave quando voce varre um array por que o React é burro
 
-              <Col xs={12} sm={4} md={3} lg={3}>
+              <Col xs={12} sm={4} md={6} lg={3}>
                 <Card key={info.id} className="card__model">
                   <CardImg src={info.image} alt={info.name} />
                   <CardBody>
@@ -38,7 +38,6 @@ export default class CardClass extends Component {
               </Col>
             )) // Atributo que o componente renderiza
           }
-          <span className="infoFooter">contador :{}</span>
         </Row>
       </>
     );
