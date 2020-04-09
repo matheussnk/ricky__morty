@@ -9,7 +9,7 @@ h1.headerTitle{
 .card__model.card {
   border: 0.0983rem solid rgb(32, 35, 41);
   margin: 1rem 0;
-  height: 26vw;
+  height: auto;
 }
 
 .card__model p {
