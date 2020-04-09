@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Row, Col, CardImg, CardBody } from "reactstrap";
+import { Card, Row, Col, CardImg, CardBody, CardTitle } from "reactstrap";
 import "./style.css";
 import api from "../../services/api";
 
@@ -8,9 +8,8 @@ export default class CardClass extends Component {
     data: [],
   };
 
-  
   async componentDidMount() {
-    const response = await api.get(`/character/?page=${(Math.random() * 10)}`);
+    const response = await api.get(`/character/?page=${Math.random() * 10}`);
     this.state.data = this.setState({
       data: response.data.results,
     });
@@ -20,7 +19,7 @@ export default class CardClass extends Component {
     //JSX
     return (
       <>
-        <h1>Aqui tem um card em modelo de classe</h1>
+        <h1 className="headerTitle">Wellcome Rick & Morty Site </h1>
         <Row>
           {
             this.state.data.map((info) => (
@@ -28,16 +27,18 @@ export default class CardClass extends Component {
 
               <Col xs={12} sm={4} md={3} lg={3}>
                 <Card key={info.id} className="card__model">
-                  <CardImg topwidth="100%" src={info.image} alt={info.name} />
+                  <CardImg src={info.image} alt={info.name} />
                   <CardBody>
-                    <p>Nome : {info.name}</p>
+                    <CardTitle>{info.name}</CardTitle>
                     <p>Status : {info.status}</p>
                     <p>Gender : {info.gender}</p>
+                    <p>Species : {info.species}</p>
                   </CardBody>
                 </Card>
               </Col>
             )) // Atributo que o componente renderiza
           }
+          <span className="infoFooter">contador :{}</span>
         </Row>
       </>
     );

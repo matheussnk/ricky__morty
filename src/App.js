@@ -4,8 +4,9 @@ import CardClass from './components/CardClass';
 
 function App() {
   return (
-    <CardClass /> 
+    <CardClass/> 
   );
 }
+
 
 export default App;
