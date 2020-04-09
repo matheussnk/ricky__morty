@@ -1,0 +1,45 @@
+import React, { Component } from "react";
+import { Card, Row, Col, CardImg, CardBody } from "reactstrap";
+import "./style.css";
+import api from "../../services/api";
+
+export default class CardClass extends Component {
+  state = {
+    data: [],
+  };
+
+  
+  async componentDidMount() {
+    const response = await api.get(`/character/?page=${(Math.random() * 10)}`);
+    this.state.data = this.setState({
+      data: response.data.results,
+    });
+  }
+
+  render() {
+    //JSX
+    return (
+      <>
+        <h1>Aqui tem um card em modelo de classe</h1>
+        <Row>
+          {
+            this.state.data.map((info) => (
+              // sempre é necessario passar uma chave quando voce varre um array por que o React é burro
+
+              <Col xs={12} sm={4} md={3} lg={3}>
+                <Card key={info.id} className="card__model">
+                  <CardImg topwidth="100%" src={info.image} alt={info.name} />
+                  <CardBody>
+                    <p>Nome : {info.name}</p>
+                    <p>Status : {info.status}</p>
+                    <p>Gender : {info.gender}</p>
+                  </CardBody>
+                </Card>
+              </Col>
+            )) // Atributo que o componente renderiza
+          }
+        </Row>
+      </>
+    );
+  }
+}
